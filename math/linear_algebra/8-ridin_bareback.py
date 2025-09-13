@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 """
+8-ridin_bareback.py
+
+This module contains a function mat_mul that performs
+matrix multiplication on two 2D matrices.
+"""
+
+
+def mat_mul(mat1, mat2):
+    """
     Performs matrix multiplication of two 2D matrices.
 
     Args:
@@ -9,14 +18,14 @@
     Returns:
         list of lists: Resulting matrix (m x p)
         None: If the matrices cannot be multiplied
-"""
-def mat_mul(mat1, mat2):
+    """
     # Check if multiplication is possible
     if len(mat1[0]) != len(mat2):
         return None
 
-    # Initialize result matrix with zeros
+    # Initialize result matrix
     result = []
+
     for i in range(len(mat1)):
         new_row = []
         for j in range(len(mat2[0])):
