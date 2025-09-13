@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-def mat_mul(mat1, mat2):
-    """
+"""
     Performs matrix multiplication of two 2D matrices.
 
     Args:
@@ -10,7 +9,8 @@ def mat_mul(mat1, mat2):
     Returns:
         list of lists: Resulting matrix (m x p)
         None: If the matrices cannot be multiplied
-    """
+"""
+def mat_mul(mat1, mat2):
     # Check if multiplication is possible
     if len(mat1[0]) != len(mat2):
         return None
