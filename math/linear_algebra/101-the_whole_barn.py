@@ -1,4 +1,6 @@
-s module defines a function add_matrices
+#!/usr/bin/env python3
+"""
+This module defines a function add_matrices
 that adds two matrices of arbitrary depth.
 """
 
