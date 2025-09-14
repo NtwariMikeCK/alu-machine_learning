@@ -1,4 +1,6 @@
-s module contains a function np_transpose that returns
+#!/usr/bin/env python3
+"""
+This module contains a function np_transpose that returns
 the transpose of a NumPy ndarray.
 """
 
