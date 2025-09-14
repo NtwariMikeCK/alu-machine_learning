@@ -1,9 +1,9 @@
-s module contains a function np_elementwise that performs
-element-wise arithmetic operations (addition, subtraction,
-multiplication, and division) on NumPy arrays.
+#!/usr/bin/env python3
 """
-
-import numpy as np
+This module contains a function np_elementwise that performs
+element-wise addition, subtraction, multiplication, and
+division on NumPy arrays.
+"""
 
 
 def np_elementwise(mat1, mat2):
@@ -21,4 +21,4 @@ def np_elementwise(mat1, mat2):
             - product: element-wise multiplication
             - quotient: element-wise division
     """
-    return (mat1 + mat2, mat1 - mat2, mat1 * mat2, mat1 / mat2)
+    return mat1 + mat2, mat1 - mat2, mat1 * mat2, mat1 / mat2
