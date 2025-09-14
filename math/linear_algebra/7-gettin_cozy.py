@@ -1,16 +1,30 @@
 #!/usr/bin/env python3
+"""
+7-gettin_cozy.py
+
+This module contains a function cat_matrices2D that concatenates
+two 2D matrices along a specified axis.
+"""
+
+
 def cat_matrices2D(mat1, mat2, axis=0):
+    """
+    Concatenates two 2D matrices along the given axis.
+
+    Args:
+        mat1 (list of lists): First matrix
+        mat2 (list of lists): Second matrix
+        axis (int): 0 to concatenate rows, 1 to concatenate columns
+
+    Returns:
+        list of lists: New concatenated matrix
+        None: If the matrices cannot be concatenated or axis is invalid
+    """
     # Axis 0: concatenate rows
     if axis == 0:
         # Check that number of columns matches
-        if not mat1:
-            cols1 = 0
-        else:
-            cols1 = len(mat1[0])
-        if not mat2:
-            cols2 = 0
-        else:
-            cols2 = len(mat2[0])
+        cols1 = len(mat1[0]) if mat1 else 0
+        cols2 = len(mat2[0]) if mat2 else 0
         if cols1 != cols2:
             return None
         return [row[:] for row in mat1] + [row[:] for row in mat2]
