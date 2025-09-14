@@ -1,4 +1,6 @@
-s module contains a function np_cat that concatenates
+#!/usr/bin/env python3
+"""
+This module contains a function np_cat that concatenates
 two NumPy arrays along a specified axis.
 """
 
