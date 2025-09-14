@@ -4,8 +4,6 @@ This module contains a function np_shape that calculates
 the shape of a NumPy ndarray.
 """
 
-import numpy as np
-
 
 def np_shape(matrix):
     """
