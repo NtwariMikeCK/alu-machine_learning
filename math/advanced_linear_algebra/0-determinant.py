@@ -11,6 +11,7 @@
         ValueError: if matrix is not square
 """
 
+
 def determinant(matrix):
     """
     Calculates the determinant of a matrix.
