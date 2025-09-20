@@ -24,7 +24,6 @@ def determinant(matrix):
     return det
 
 
-
 def minor(matrix):
     """
     Calculates the minor matrix of a square matrix
