@@ -29,16 +29,7 @@ def minor(matrix):
     """
     Calculates the minor matrix of a square matrix
     """
-    if (type(matrix) is not list or
-            not all(type(row) is list for row in matrix)):
-        raise TypeError("matrix must be a list of lists")
-
     n = len(matrix)
-    if n == 0 or matrix == [[]]:
-        raise ValueError("matrix must be a non-empty square matrix")
-    if not all(len(row) == n for row in matrix):
-        raise ValueError("matrix must be a non-empty square matrix")
-
     if n == 1:
         return [[1]]
 
@@ -94,17 +85,27 @@ def inverse(matrix):
         TypeError: if matrix is not a list of lists
         ValueError: if matrix is not square or is empty
     """
+    # ✅ Validate first
+    if (type(matrix) is not list or
+            not all(type(row) is list for row in matrix)):
+        raise TypeError("matrix must be a list of lists")
+
+    n = len(matrix)
+    if n == 0 or matrix == [[]]:
+        raise ValueError("matrix must be a non-empty square matrix")
+    if not all(len(row) == n for row in matrix):
+        raise ValueError("matrix must be a non-empty square matrix")
+
+    # ✅ Now safe to compute
     det = determinant(matrix)
     if det == 0:
         return None
 
     adj = adjugate(matrix)
-    n = len(matrix)
     inv = []
     for i in range(n):
         row = []
         for j in range(n):
             row.append(adj[i][j] / det)
         inv.append(row)
-
     return inv
