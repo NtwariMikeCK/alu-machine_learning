@@ -88,4 +88,3 @@ def adjugate(matrix):
     cof = cofactor(matrix)
     # Transpose of the cofactor matrix
     return [list(row) for row in zip(*cof)]
-
