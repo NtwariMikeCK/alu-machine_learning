@@ -4,26 +4,6 @@ dule to calculate the minor matrix of a square matrix
 """
 
 
-def determinant(matrix):
-    """
-    Recursively calculates the determinant of a square matrix
-    """
-    if matrix == [[]]:
-        return 1
-
-    n = len(matrix)
-    if n == 1:
-        return matrix[0][0]
-    if n == 2:
-        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
-
-    det = 0
-    for col in range(n):
-        submatrix = [row[:col] + row[col + 1:] for row in matrix[1:]]
-        det += ((-1) ** col) * matrix[0][col] * determinant(submatrix)
-    return det
-
-
 def minor(matrix):
     """
     Calculates the minor matrix of a square matrix
@@ -38,7 +18,8 @@ def minor(matrix):
         TypeError: if matrix is not a list of lists
         ValueError: if matrix is not square or is empty
     """
-    if type(matrix) is not list or not all(type(row) is list for row in matrix):
+    if (type(matrix) is not list or
+            not all(type(row) is list for row in matrix)):
         raise TypeError("matrix must be a list of lists")
 
     n = len(matrix)
@@ -54,7 +35,8 @@ def minor(matrix):
     for i in range(n):
         minor_row = []
         for j in range(n):
-            submatrix = [row[:j] + row[j + 1:] for k, row in enumerate(matrix) if k != i]
+            submatrix = [row[:j] + row[j + 1:]
+                         for k, row in enumerate(matrix) if k != i]
             minor_row.append(determinant(submatrix))
         minors.append(minor_row)
 
