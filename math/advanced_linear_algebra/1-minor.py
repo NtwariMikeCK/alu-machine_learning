@@ -1,4 +1,5 @@
-
+#!/usr/bin/env python3
+"""
 dule to calculate the minor matrix of a square matrix
 """
 
