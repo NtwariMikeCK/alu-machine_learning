@@ -1,4 +1,5 @@
-
+#!/usr/bin/env python3
+"""
 dule to calculate the minor matrix of a square matrix
 """
 
@@ -37,7 +38,8 @@ def minor(matrix):
         TypeError: if matrix is not a list of lists
         ValueError: if matrix is not square or is empty
     """
-    if type(matrix) is not list or not all(type(row) is list for row in matrix):
+    if (type(matrix) is not list or
+            not all(type(row) is list for row in matrix)):
         raise TypeError("matrix must be a list of lists")
 
     n = len(matrix)
@@ -53,7 +55,8 @@ def minor(matrix):
     for i in range(n):
         minor_row = []
         for j in range(n):
-            submatrix = [row[:j] + row[j + 1:] for k, row in enumerate(matrix) if k != i]
+            submatrix = [row[:j] + row[j + 1:]
+                         for k, row in enumerate(matrix) if k != i]
             minor_row.append(determinant(submatrix))
         minors.append(minor_row)
 
