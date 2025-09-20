@@ -108,4 +108,3 @@ def inverse(matrix):
         inv.append(row)
 
     return inv
-
