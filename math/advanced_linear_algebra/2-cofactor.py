@@ -79,4 +79,3 @@ def cofactor(matrix):
         cofactors.append(cofactor_row)
 
     return cofactors
-
