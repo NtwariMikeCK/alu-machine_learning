@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""
+   Calculate the sum of squares of the first n natural numbers.
+   Uses the formula: 1^2 + 2^2 + ... + n^2 = n*(n+1)*(2n+1)/6
+"""
+
 
 def summation_i_squared(n):
     """
