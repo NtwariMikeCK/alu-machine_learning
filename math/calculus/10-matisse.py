@@ -32,4 +32,3 @@ def poly_derivative(poly):
         derivative = derivative[:-1]
 
     return derivative
-    
