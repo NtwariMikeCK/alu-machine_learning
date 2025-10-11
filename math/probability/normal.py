@@ -16,7 +16,7 @@ class Normal:
         mean (float): The mean (average) of the distribution
         stddev (float): The standard deviation of the distribution
     """
-    
+
     def __init__(self, data=None, mean=0., stddev=1.):
         """
         Initialize a Normal distribution.
@@ -26,7 +26,7 @@ class Normal:
             stddev (float, optional): Standard deviation. Default is 1.
         Raises:
             TypeError: If data is not a list
-            ValueError: If stddev is not positive or data has fewer than 2 values
+            ValueError: If stddev is not positive or data has fewer than 2
         """
         if data is None:
             # Use given mean and stddev
@@ -45,7 +45,7 @@ class Normal:
             # Calculate standard deviation
             variance = sum((x - self.mean) ** 2 for x in data) / len(data)
             self.stddev = variance ** 0.5
-    
+
     def z_score(self, x):
         """
         Calculate the z-score of a given x-value.
@@ -57,7 +57,7 @@ class Normal:
             float: The z-score of x
         """
         return (x - self.mean) / self.stddev
-    
+
     def x_value(self, z):
         """
         Calculate the x-value of a given z-score.
@@ -69,13 +69,13 @@ class Normal:
             float: The x-value of z
         """
         return self.mean + z * self.stddev
-    
+
     def pdf(self, x):
         """
         Calculate the Probability Density Function (PDF) for a given x-value.
-        The PDF gives the relative likelihood for the random variable to take on
+        The PDF gives the relative likelihood for the random variable to take
         a given value.
-        Formula: PDF(x) = (1 / (stddev * sqrt(2*pi))) * e^(-0.5 * ((x - mean) / stddev)^2)
+        Formula: PDF(x) = (1 / (stddev * sqrt(2*pi)))
         Args:
             x (float): The x-value
         Returns:
@@ -92,10 +92,10 @@ class Normal:
         # PDF = coefficient * e^exponent
         pdf_value = coefficient * (e ** exponent)
         return pdf_value
-    
+
     def cdf(self, x):
         """
-        Calculate the Cumulative Distribution Function (CDF) for a given x-value.
+        Calculate the Cumulative Distribution Function (CDF) for a given
         The CDF gives the probability that the random variable is less than or
         equal to a certain value x.
         Formula: CDF(x) = 0.5 * (1 + erf((x - mean) / (stddev * sqrt(2))))
