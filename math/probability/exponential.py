@@ -18,7 +18,7 @@ class Exponential:
         """
         Initialize an Exponential distribution.
         Args:
-            data (list, optional): List of data to estimate the                     
+            data (list, optional): List of data to estimate the                    
             lambtha (float, optional): Rate parameter. Default is 1.
         Raises:
             TypeError: If data is not a list
@@ -38,7 +38,6 @@ class Exponential:
             # For exponential distribution, lambtha = 1 / mean
             mean = sum(data) / len(data)
             self.lambtha = 1 / mean
-    
     def pdf(self, x):
         """
         Calculate the Probability Density Function (PDF) for a
@@ -61,7 +60,7 @@ class Exponential:
 
     def cdf(self, x):
         """
-        Calculate the Cumulative Distribution 
+        Calculate the Cumulative Distribution
         The CDF gives the probability that the
         equal to a certain value x.
         Formula: CDF(x) = 1 - e^(-lambtha * x)
