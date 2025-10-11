@@ -56,7 +56,22 @@ class Poisson:
         return round(result, 10)
 
     def cdf(self, k):
-        """This is used to find cdf for a poisson distributions"""
+        """
+        Calculates the Cumulative Distribution Function (CDF) for the Poisson distribution.
+    
+        The CDF is the probability that the random variable X takes a value less than or 
+        equal to k. It is computed by summing the PMF values from 0 to k:
+    
+            CDF(k; λ) = P(X <= k) = sum_{i=0}^{k} PMF(i; λ)
+    
+        Parameters:
+        - k (int or float): The number of "successes". If a float is provided, it is 
+          converted to an integer.
+    
+        Returns:
+        - float: The cumulative probability P(X <= k), rounded to 10 decimal places.
+                 Returns 0 if k is negative.
+        """
         if not isinstance(k, int):
             k = int(k)
         if k < 0:
@@ -64,4 +79,4 @@ class Poisson:
         total = 0
         for i in range(k + 1):
             total += self.pmf(i)
-        return round(total, 10)
+        return round(total, 10)  # round to 10 decimal places
