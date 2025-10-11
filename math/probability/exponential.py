@@ -38,23 +38,12 @@ class Exponential:
         return result
 
     def pdf(self, x):
-        """
-        Calculates the PDF value for a given time period x
-        PDF(x; λ) = λ * e^(-λ * x)
-
-        Returns 0 if x < 0
-        """
         if x < 0:
             return 0
-        return self.lambtha * self._exp(-self.lambtha * x)
+        # use larger terms for stability
+        return self.lambtha * self._exp(-self.lambtha * x, terms=150)
 
     def cdf(self, x):
-        """
-        Calculates the CDF value for a given time period x
-        CDF(x; λ) = 1 - e^(-λ * x)
-
-        Returns 0 if x < 0
-        """
         if x < 0:
             return 0
-        return 1 - self._exp(-self.lambtha * x)
+        return 1 - self._exp(-self.lambtha * x, terms=150)
