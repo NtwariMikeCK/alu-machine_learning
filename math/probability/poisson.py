@@ -52,7 +52,8 @@ class Poisson:
         if k < 0:
             return 0
         e_term = self._exp(-self.lambtha)
-        return (e_term * (self.lambtha ** k)) / self._factorial(k)
+        result = (e_term * (self.lambtha ** k)) / self._factorial(k)
+        return round(result, 10)
 
     def cdf(self, k):
         if not isinstance(k, int):
@@ -62,4 +63,4 @@ class Poisson:
         total = 0
         for i in range(k + 1):
             total += self.pmf(i)
-        return total
+        return round(total, 10)
