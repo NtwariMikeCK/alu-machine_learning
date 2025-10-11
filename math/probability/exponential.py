@@ -2,7 +2,6 @@
 """
 Exponential distribution class
 """
-import math
 
 class Exponential:
     """Represents an Exponential distribution"""
@@ -27,21 +26,3 @@ class Exponential:
             # For exponential distribution, lambtha is 1 / mean
             mean = sum(data) / len(data)
             self.lambtha = float(1 / mean)
-
-    def pdf(self, x):
-        """
-        Calculates the PDF value for a given time period x
-        PDF(x; λ) = λ * e^(-λ * x)
-        """
-        if x < 0:
-            return 0
-        return self.lambtha * math.exp(-self.lambtha * x)
-    
-    def cdf(self, x):
-        """
-        Calculates the CDF value for a given time period x
-        CDF(x; λ) = 1 - e^(-λ * x)
-        """
-        if x < 0:
-            return 0
-        return 1 - math.exp(-self.lambtha * x)
