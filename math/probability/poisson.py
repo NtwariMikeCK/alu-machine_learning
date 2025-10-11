@@ -56,6 +56,7 @@ class Poisson:
         return round(result, 10)
 
     def cdf(self, k):
+        """This is used to find cdf for a poisson distributions"""
         if not isinstance(k, int):
             k = int(k)
         if k < 0:
