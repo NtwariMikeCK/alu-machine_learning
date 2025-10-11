@@ -10,7 +10,7 @@ independent Bernoulli trials.
 class Binomial:
     """
     Represents a binomial distribution.
-    The binomial distribution is the discrete probability 
+    The binomial distribution is the discrete probability
     of successes in a sequence of n independent experiments,
     question with probability p of success.
     Attributes:
