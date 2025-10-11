@@ -33,7 +33,7 @@ class Poisson:
             self.lambtha = float(sum(data) / len(data))
 
     def _factorial(self, n):
-        """Compute factorial of n without importing math"""
+        """Compute factorial of n""
         if n == 0 or n == 1:
             return 1
         result = 1
