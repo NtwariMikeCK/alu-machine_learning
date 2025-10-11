@@ -2,7 +2,7 @@
 """
 Normal Distribution Module
 This module contains the Normal class that represents
-The normal distribution is the most important probability
+The normal distribution is the most probability
 """
 
 
