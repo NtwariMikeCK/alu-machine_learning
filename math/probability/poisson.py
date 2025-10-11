@@ -28,7 +28,6 @@ class Poisson:
                 raise ValueError("data must contain multiple values")
             self.lambtha = float(sum(data) / len(data))
 
-    
     def _factorial(self, n):
         """Compute factorial of n without math"""
         if n == 0 or n == 1:
