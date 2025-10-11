@@ -3,6 +3,7 @@
 Exponential distribution class
 """
 
+
 class Exponential:
     """Represents an Exponential distribution"""
 
