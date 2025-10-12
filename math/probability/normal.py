@@ -92,7 +92,7 @@ class Normal:
         # PDF = coefficient * e^exponent
         pdf_value = coefficient * (e ** exponent)
         return pdf_value
-    
+
     def cdf(self, x):
         """
         Calculate the Cumulative Distribution Function (CDF)
