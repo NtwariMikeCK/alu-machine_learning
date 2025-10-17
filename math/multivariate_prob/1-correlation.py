@@ -2,6 +2,7 @@
 """correlation class"""
 import numpy as np
 
+
 def correlation(C):
     """
     Calculates the correlation matrix from a covariance matrix.
