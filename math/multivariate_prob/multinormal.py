@@ -32,12 +32,12 @@ class MultiNormal:
         # Cov = (1/(n-1)) * X_centered @ X_centered.T
         self.cov = (data_centered @ data_centered.T) / (n - 1)
         self.d = d  # store number of dimensions
-    
     def pdf(self, x):
         """
         Calculates the PDF at a given data point x.
         Parameters:
-        x (numpy.ndarray): A numpy array of shape (d, 1) containing the data point
+        x (numpy.ndarray): A numpy array of shape (d, 1) containing
+            the data point
         Returns:
         float: The PDF value at x
         Raises:
@@ -47,14 +47,15 @@ class MultiNormal:
         if not isinstance(x, np.ndarray):
             raise TypeError("x must be a numpy.ndarray")
         if x.shape != (self.d, 1):
-            raise ValueError(f"x must have the shape ({self.d}, 1)")
+            raise ValueError("x must have the shape ({}, 1)".format(self.d))
         # Center x
         diff = x - self.mean
         # Determinant and inverse of covariance matrix
         det_cov = np.linalg.det(self.cov)
         inv_cov = np.linalg.inv(self.cov)
         # Multivariate normal PDF formula:
-        # PDF(x) = (1 / sqrt((2π)^d * |Σ|)) * exp(-0.5 * (x-μ)ᵀ * Σ^(-1) * (x-μ))
+        # PDF(x) = (1 / sqrt((2π)^d * |Σ|)) * exp(-0.5 *
+        # (x-μ)ᵀ * Σ^(-1) * (x-μ))
         norm_const = 1 / (np.sqrt((2 * np.pi) ** self.d * det_cov))
         exponent = -0.5 * (diff.T @ inv_cov @ diff)
         return float(norm_const * np.exp(exponent))
