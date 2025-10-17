@@ -9,8 +9,8 @@ def mean_cov(X):
     Parameters:
     X (numpy.ndarray): A 2D numpy array of shape (n, d) containing the dataset.
     Returns:
-    mean (numpy.ndarray): A numpy array of shape (1, d) containing the mean of the dataset.
-    cov (numpy.ndarray): A numpy array of shape (d, d) containing the covariance matrix.
+    mean (numpy.ndarray): np array of containing the mean of the dataset.
+    cov (numpy.ndarray): np numpy array containing the covariance matrix.
     """
     if not isinstance(X, np.ndarray) or X.ndim != 2:
         raise TypeError("X must be a 2D numpy.ndarray")
@@ -24,3 +24,4 @@ def mean_cov(X):
     # Compute the covariance matrix
     cov = (X_centered.T @ X_centered) / (n - 1)
     return mean, cov
+
