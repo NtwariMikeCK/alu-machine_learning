@@ -32,6 +32,7 @@ class MultiNormal:
         # Cov = (1/(n-1)) * X_centered @ X_centered.T
         self.cov = (data_centered @ data_centered.T) / (n - 1)
         self.d = d  # store number of dimensions
+        
     def pdf(self, x):
         """
         Calculates the PDF at a given data point x.
