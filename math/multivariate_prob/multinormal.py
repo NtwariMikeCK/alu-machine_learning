@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Binomial distribution class"""
+"""Module for Multivariate Normal distribution"""
 import numpy as np
 
 
@@ -13,6 +13,11 @@ class MultiNormal:
         Parameters:
         data (numpy.ndarray): A 2D numpy array of shape (d, n)
             containing the dataset.
+                d is the number of dimensions
+                n is the number of data points
+        Raises:
+        TypeError: If data is not a 2D numpy.ndarray
+        ValueError: If data contains less than 2 data points
         """
         if not isinstance(data, np.ndarray) or data.ndim != 2:
             raise TypeError("data must be a 2D numpy.ndarray")
@@ -24,27 +29,5 @@ class MultiNormal:
         # Center data
         data_centered = data - self.mean
         # Compute covariance matrix (d, d)
+        # Cov = (1/(n-1)) * X_centered @ X_centered.T
         self.cov = (data_centered @ data_centered.T) / (n - 1)
-        self.d = d  # number of dimensions
-
-    def pdf(self, x):
-        """
-        Calculates the PDF at a given data point x.
-        Parameters:
-        x (numpy.ndarray): A numpy array of shape (d, 1).
-        Returns:
-        float: The PDF value at x.
-        """
-        if not isinstance(x, np.ndarray):
-            raise TypeError("x must be a numpy.ndarray")
-        if x.shape != (self.d, 1):
-            raise ValueError(f"x must have the shape ({self.d}, 1)")
-        # Center x
-        diff = x - self.mean
-        # Determinant and inverse of covariance matrix
-        det_cov = np.linalg.det(self.cov)
-        inv_cov = np.linalg.inv(self.cov)
-        # Multivariate normal PDF formula
-        norm_const = 1 / (np.sqrt((2 * np.pi) ** self.d * det_cov))
-        exponent = -0.5 * (diff.T @ inv_cov @ diff)
-        return float(norm_const * np.exp(exponent))
