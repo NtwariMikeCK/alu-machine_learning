@@ -24,4 +24,3 @@ def mean_cov(X):
     # Compute the covariance matrix
     cov = (X_centered.T @ X_centered) / (n - 1)
     return mean, cov
-
