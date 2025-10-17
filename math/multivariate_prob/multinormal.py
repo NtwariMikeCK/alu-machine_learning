@@ -12,7 +12,7 @@ class MultiNormal:
         Class constructor.
         Parameters:
         data (numpy.ndarray): A 2D numpy array of shape (d, n)
-          containing the dataset.
+            containing the dataset.
         """
         if not isinstance(data, np.ndarray) or data.ndim != 2:
             raise TypeError("data must be a 2D numpy.ndarray")
@@ -25,6 +25,7 @@ class MultiNormal:
         data_centered = data - self.mean
         # Compute covariance matrix (d, d)
         self.cov = (data_centered @ data_centered.T) / (n - 1)
+        self.d = d  # number of dimensions
 
     def pdf(self, x):
         """
