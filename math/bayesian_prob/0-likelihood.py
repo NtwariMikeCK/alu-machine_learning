@@ -43,7 +43,8 @@ def likelihood(x, n, P):
     A = np.math.factorial(n)
     B = (np.math.factorial(x) * np.math.factorial(n - x))
     binomial_coef = A / B
-    #binomial_coef = np.math.factorial(n) / (np.math.factorial(x) * np.math.factorial(n - x))
+    # binomial_coef = np.math.factorial(n) / 
+        # (np.math.factorial(x) * np.math.factorial(n - x))
     # Calculate likelihood using binomial probability formula:
     # L(P|x,n) = C(n,x) * P^x * (1-P)^(n-x)
     likelihood_values = binomial_coef * (P ** x) * ((1 - P) ** (n - x))
