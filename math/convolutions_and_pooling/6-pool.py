@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Performs a valid convolution on grayscale images."""
 import numpy as np
-import numpy as np
 
 
 def pool(images, kernel_shape, stride, mode='max'):
