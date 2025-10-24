@@ -8,12 +8,13 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     Performs a convolution on grayscale images.
     Args:
         images: numpy.ndarray with shape (m, h, w) containing
-          multiple grayscale images
+            multiple grayscale images
         kernel: numpy.ndarray with shape (kh, kw) containing
-          the convolution kernel
+            the convolution kernel
         padding: either a tuple of (ph, pw), 'same', or 'valid'
-        stride: tuple of (sh, sw) specifying stride for
-          height and width
+        stride: tuple of (sh, sw) specifying stride for height
+            and width
+    
     Returns:
         numpy.ndarray containing the convolved images
     """
@@ -40,7 +41,8 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         constant_values=0
     )
     # Calculate output dimensions with stride
-    # Formula: output_size = (input_size + 2*padding - kernel_size) / stride + 1
+    # Formula: output_size = (input_size + 2*padding - kernel_size)
+    # / stride + 1
     output_h = (h + 2 * ph - kh) // sh + 1
     output_w = (w + 2 * pw - kw) // sw + 1
     # Initialize output array
