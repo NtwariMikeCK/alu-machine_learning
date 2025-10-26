@@ -1,45 +1,34 @@
 #!/usr/bin/env python3
-"""Performs a valid convolution on grayscale images."""
+"""Pooling"""
+
+
 import numpy as np
 
 
 def pool(images, kernel_shape, stride, mode='max'):
-    """
-    Performs pooling on images.
-    Args:
-        images: numpy.ndarray with shape (m, h, w, c) containing
-          multiple images
-        kernel_shape: tuple of (kh, kw) containing the kernel
-          shape for pooling
-        stride: tuple of (sh, sw) specifying stride for
-          height and width
-        mode: 'max' for max pooling or 'avg' for average
-          pooling
-    Returns:
-        numpy.ndarray containing the pooled images
-    """
+    """Function to perform pooling on images"""
+
     m, h, w, c = images.shape
     kh, kw = kernel_shape
     sh, sw = stride
-    # Calculate output dimensions
-    output_h = (h - kh) // sh + 1
-    output_w = (w - kw) // sw + 1
-    # Initialize output array
-    pooled = np.zeros((m, output_h, output_w, c))
-    # Perform pooling using only two for loops
-    for i in range(output_h):
-        for j in range(output_w):
-            # Calculate the starting position in the image
-            start_i = i * sh
-            start_j = j * sw
-            # Extract the region of interest from all images and all channels
-            # Shape: (m, kh, kw, c)
-            region = images[:, start_i:start_i+kh, start_j:start_j+kw, :]
-            # Apply pooling operation
+
+    # Gives dimensions of the output after pooling and considering stride
+    new_h = (h - kh) // sh + 1
+    new_w = (w - kw) // sw + 1
+
+    # Initialize the output array
+    output = np.zeros((m, new_h, new_w, c))
+
+    # Pooling operation based on mode
+    for y in range(0, new_h * sh, sh):
+        for x in range(0, new_w * sw, sw):
             if mode == 'max':
-                # Max pooling: take maximum value in each window
-                pooled[:, i, j, :] = np.max(region, axis=(1, 2))
+                output[:, y // sh, x // sw, :] = np.max(
+                    images[:, y: y + kh, x: x + kw, :], axis=(1, 2))
             elif mode == 'avg':
-                # Average pooling: take mean value in each window
-                pooled[:, i, j, :] = np.mean(region, axis=(1, 2))
-    return pooled
+                output[:, y // sh, x // sw, :] = np.mean(
+                    images[:, y: y + kh, x: x + kw, :], axis=(1, 2))
+            else:
+                raise ValueError("Mode should be either 'max' or 'avg'")
+
+    return output
