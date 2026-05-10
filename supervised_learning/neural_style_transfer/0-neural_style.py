@@ -3,22 +3,20 @@
 0-neural_style.py
 """
 
-import numpy as np
 import tensorflow as tf
+import numpy as np
 
 
 class NST:
     """
-    Performs Neural Style Transfer
+    Neural Style Transfer class
     """
 
-    style_layers = [
-        'block1_conv1',
-        'block2_conv1',
-        'block3_conv1',
-        'block4_conv1',
-        'block5_conv1'
-    ]
+    style_layers = ['block1_conv1',
+                    'block2_conv1',
+                    'block3_conv1',
+                    'block4_conv1',
+                    'block5_conv1']
 
     content_layer = 'block5_conv2'
 
@@ -32,29 +30,32 @@ class NST:
                 len(style_image.shape) != 3 or
                 style_image.shape[2] != 3):
             raise TypeError(
-                "style_image must be a numpy.ndarray with shape (h, w, 3)"
+                "style_image must be a numpy.ndarray "
+                "with shape (h, w, 3)"
             )
 
         if (not isinstance(content_image, np.ndarray) or
                 len(content_image.shape) != 3 or
                 content_image.shape[2] != 3):
             raise TypeError(
-                "content_image must be a numpy.ndarray with shape (h, w, 3)"
+                "content_image must be a numpy.ndarray "
+                "with shape (h, w, 3)"
             )
 
-        if (not isinstance(alpha, (int, float)) or
+        if (not isinstance(alpha, (float, int)) or
                 alpha < 0):
             raise TypeError(
                 "alpha must be a non-negative number"
             )
 
-        if (not isinstance(beta, (int, float)) or
+        if (not isinstance(beta, (float, int)) or
                 beta < 0):
             raise TypeError(
                 "beta must be a non-negative number"
             )
 
-        tf.enable_eager_execution()
+        # Enable eager execution (compatible with TF2)
+        tf.config.run_functions_eagerly(True)
 
         self.style_image = self.scale_image(style_image)
         self.content_image = self.scale_image(content_image)
@@ -65,16 +66,17 @@ class NST:
     @staticmethod
     def scale_image(image):
         """
-        Rescales an image such that:
-        - pixel values are between 0 and 1
-        - largest side is 512 pixels
+        Rescales an image such that its pixels values
+        are between 0 and 1 and its largest side is 512
+        pixels
         """
 
         if (not isinstance(image, np.ndarray) or
                 len(image.shape) != 3 or
                 image.shape[2] != 3):
             raise TypeError(
-                "image must be a numpy.ndarray with shape (h, w, 3)"
+                "image must be a numpy.ndarray "
+                "with shape (h, w, 3)"
             )
 
         h, w, _ = image.shape
@@ -94,7 +96,7 @@ class NST:
             method=tf.image.ResizeMethod.BICUBIC
         )
 
-        image = image / 255
+        image = image / 255.0
 
         image = tf.clip_by_value(image, 0, 1)
 
