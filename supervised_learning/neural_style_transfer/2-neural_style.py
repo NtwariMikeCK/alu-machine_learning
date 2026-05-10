@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-1-neural_style.py
+2-neural_style.py
 """
 
 import tensorflow as tf
@@ -132,3 +132,26 @@ class NST:
         model.trainable = False
 
         self.model = model
+
+    @staticmethod
+    def gram_matrix(input_layer):
+        """
+        Calculates the gram matrix of an input layer
+        """
+
+        if (not isinstance(input_layer, (tf.Tensor, tf.Variable)) or
+                len(input_layer.shape) != 4):
+            raise TypeError(
+                "input_layer must be a tensor of rank 4"
+            )
+
+        gram = tf.linalg.einsum(
+            'bijc,bijd->bcd',
+            input_layer,
+            input_layer
+        )
+
+        h = input_layer.shape[1]
+        w = input_layer.shape[2]
+
+        return gram / (h * w)
